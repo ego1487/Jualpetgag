@@ -282,37 +282,37 @@ nav a:hover {
     <ul id="cart-list"></ul>
     <a id="whatsapp-checkout" href="#" target="_blank">Kirim ke WhatsApp</a>
   </div>  <script>
-    const cart = [];
-    const cartList = document.getElementById("cart-list");
-    const cartBox = document.getElementById("cart");
-    const toggleCart = document.getElementById("toggle-cart");
-    const waCheckout = document.getElementById("whatsapp-checkout");
+  const cart = [];
+  const cartList = document.getElementById("cart-list");
+  const cartBox = document.getElementById("cart");
+  const toggleCart = document.getElementById("toggle-cart");
+  const waCheckout = document.getElementById("whatsapp-checkout");
 
-    document.querySelectorAll(".card a").forEach(link => {
-      const btn = document.createElement("button");
-      btn.innerText = "Tambah ke Keranjang";
-      btn.onclick = () => {
-        const name = link.parentElement.querySelector(".pet-name").innerText;
-        cart.push(name);
-        updateCart();
-        alert(name + " ditambahkan ke keranjang!");
-      };
-      link.replaceWith(btn);
-    });
-
-    toggleCart.onclick = () => {
-      cartBox.style.display = cartBox.style.display === "none" ? "block" : "none";
+  // Ubah semua tombol Order menjadi tombol Tambah ke Keranjang
+  document.querySelectorAll(".card a").forEach(link => {
+    const name = link.parentElement.querySelector(".pet-name").innerText;
+    const btn = document.createElement("button");
+    btn.innerText = "Tambah ke Keranjang";
+    btn.onclick = () => {
+      cart.push(name);
+      updateCart();
+      alert(name + " ditambahkan ke keranjang!");
     };
+    link.replaceWith(btn);
+  });
 
-    function updateCart() {
-      cartList.innerHTML = "";
-      cart.forEach((item, i) => {
-        const li = document.createElement("li");
-        li.innerText = `- ${item}`;
-        cartList.appendChild(li);
-      });
-      const text = encodeURIComponent("Halo! Saya ingin memesan:\n" + cart.map(i => `- ${i}`).join("\n"));
-      waCheckout.href = `https://wa.me/6281344110959?text=${text}`;
-    }
-  </script></body>
-</html>
+  toggleCart.onclick = () => {
+    cartBox.style.display = cartBox.style.display === "none" ? "block" : "none";
+  };
+
+  function updateCart() {
+    cartList.innerHTML = "";
+    cart.forEach((item, i) => {
+      const li = document.createElement("li");
+      li.innerText = `- ${item}`;
+      cartList.appendChild(li);
+    });
+    const text = encodeURIComponent("Halo! Saya ingin memesan:\n" + cart.map(i => `- ${i}`).join("\n"));
+    waCheckout.href = `https://wa.me/6281344110959?text=${text}`;
+  }
+  </script>
