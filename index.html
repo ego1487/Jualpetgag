@@ -281,8 +281,10 @@ nav a:hover {
     <h3>Keranjang Belanja</h3>
     <ul id="cart-list"></ul>
     <a id="whatsapp-checkout" href="#" target="_blank">Kirim ke WhatsApp</a>
-  </div>  <script>
-  const cart = [];
+  </div> 
+      
+<script>
+  const cart = {};
   const cartList = document.getElementById("cart-list");
   const cartBox = document.getElementById("cart");
   const toggleCart = document.getElementById("toggle-cart");
@@ -294,7 +296,11 @@ nav a:hover {
     const btn = document.createElement("button");
     btn.innerText = "Tambah ke Keranjang";
     btn.onclick = () => {
-      cart.push(name);
+      if (cart[name]) {
+        cart[name]++;
+      } else {
+        cart[name] = 1;
+      }
       updateCart();
       alert(name + " ditambahkan ke keranjang!");
     };
@@ -307,12 +313,18 @@ nav a:hover {
 
   function updateCart() {
     cartList.innerHTML = "";
-    cart.forEach((item, i) => {
+    for (const [item, count] of Object.entries(cart)) {
       const li = document.createElement("li");
-      li.innerText = `- ${item}`;
+      li.innerText = `- ${item} x${count}`;
       cartList.appendChild(li);
-    });
-    const text = encodeURIComponent("Halo! Saya ingin memesan:\n" + cart.map(i => `- ${i}`).join("\n"));
+    }
+
+    const text = encodeURIComponent(
+      "Halo! Saya ingin memesan:\n" +
+      Object.entries(cart)
+        .map(([item, count]) => `- ${item} x${count}`)
+        .join("\n")
+    );
     waCheckout.href = `https://wa.me/6281344110959?text=${text}`;
   }
-  </script>
+</script>
