@@ -385,16 +385,20 @@ nav a:hover {
   const toggleCart = document.getElementById("toggle-cart");
   const waCheckout = document.getElementById("whatsapp-checkout");
 
-  // Ubah semua tombol Order menjadi tombol Tambah ke Keranjang
+  // Ubah semua link Order menjadi tombol Tambah ke Keranjang
   document.querySelectorAll(".card a").forEach(link => {
-    const name = link.parentElement.querySelector(".pet-name").innerText;
+    const card = link.parentElement;
+    const name = card.querySelector(".pet-name").innerText;
+    const priceText = card.querySelector(".price").innerText.replace("k", "");
+    const price = parseInt(priceText);
+
     const btn = document.createElement("button");
     btn.innerText = "Tambah ke Keranjang";
     btn.onclick = () => {
       if (cart[name]) {
-        cart[name]++;
+        cart[name].count++;
       } else {
-        cart[name] = 1;
+        cart[name] = { count: 1, price };
       }
       updateCart();
       alert(name + " ditambahkan ke keranjang!");
@@ -402,24 +406,40 @@ nav a:hover {
     link.replaceWith(btn);
   });
 
+  // Tombol untuk membuka/menutup keranjang
   toggleCart.onclick = () => {
     cartBox.style.display = cartBox.style.display === "none" ? "block" : "none";
   };
 
+  // Fungsi untuk memperbarui isi keranjang
   function updateCart() {
     cartList.innerHTML = "";
-    for (const [item, count] of Object.entries(cart)) {
+    let total = 0;
+
+    for (const [item, { count, price }] of Object.entries(cart)) {
       const li = document.createElement("li");
-      li.innerText = `- ${item} x${count}`;
+      li.innerText = `- ${item} x${count} = ${price * count}k`;
       cartList.appendChild(li);
+      total += price * count;
+    }
+
+    if (total === 0) {
+      cartList.innerHTML = "<li>Keranjang masih kosong</li>";
+    } else {
+      const totalItem = document.createElement("li");
+      totalItem.style.fontWeight = "bold";
+      totalItem.style.marginTop = "10px";
+      totalItem.innerText = `Total: ${total}k`;
+      cartList.appendChild(totalItem);
     }
 
     const text = encodeURIComponent(
       "Halo! Saya ingin memesan:\n" +
       Object.entries(cart)
-        .map(([item, count]) => `- ${item} x${count}`)
-        .join("\n")
+        .map(([item, { count }]) => `- ${item} x${count}`)
+        .join("\n") +
+      `\n\nTotal: ${total}k`
     );
     waCheckout.href = `https://wa.me/6281344110959?text=${text}`;
   }
-</script>
+    </script>
