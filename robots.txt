@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ego1487.github.io/Jualpetgag/sitemap.xml
