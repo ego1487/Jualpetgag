@@ -150,8 +150,13 @@ nav a:hover {
 
   </style>
 </head>
-<body>  <h1>WELCOME TO EGO GAG STORES!!</h1>  <nav>
+<body>  <h1>WELCOME TO EGO GAG STORES!!</h1>
+  
+  <input type="text" id="search" placeholder="Cari produk..." style="padding: 8px; width: 80%; max-width: 400px; font-size: 16px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #aaa;">
+  
+  <nav>
     <a href="#sprinkler">Sprinkler</a>
+    <a href="#mythical-egg">Mythical Egg</a>
   <a href="#paradise-egg">Paradise Egg</a>
     <a href="#bug-egg">Bug Egg</a>
     <a href="#dino-egg">Dinosaur Egg</a>
@@ -222,6 +227,56 @@ nav a:hover {
 
 
 
+  <section id="mythical-egg">
+  <div class="subtitle">Mythical Egg</div>
+  <div class="container">
+
+    <!-- Grey Mouse -->
+    <div class="card">
+      <img src="gmouse.jpeg" alt="Grey Mouse" />
+      <div class="pet-name">Grey Mouse</div>
+      <div class="price">5k</div>
+      <a href="https://wa.me/6281344110959?text=Halo! Saya tertarik membeli Grey Mouse" target="_blank">Order</a>
+    </div>
+
+    <!-- Brown Mouse -->
+    <div class="card">
+      <img src="bmouse.jpeg" alt="Brown Mouse" />
+      <div class="pet-name">Brown Mouse</div>
+      <div class="price">8k</div>
+      <a href="https://wa.me/6281344110959?text=Halo! Saya tertarik membeli Brown Mouse" target="_blank">Order</a>
+    </div>
+
+    <!-- Squirrel -->
+    <div class="card">
+      <img src="squirrel.jpeg" alt="Squirrel" />
+      <div class="pet-name">Squirrel</div>
+      <div class="price">10k</div>
+      <a href="https://wa.me/6281344110959?text=Halo! Saya tertarik membeli Squirrel" target="_blank">Order</a>
+    </div>
+
+    <!-- Red Giant Ant -->
+    <div class="card">
+      <img src="rgiantant.jpeg" alt="Red Giant Ant" />
+      <div class="pet-name">Red Giant Ant</div>
+      <div class="price">20k</div>
+      <a href="https://wa.me/6281344110959?text=Halo! Saya tertarik membeli Red Giant Ant" target="_blank">Order</a>
+    </div>
+
+  <!-- Red Fox (SOLD OUT) -->
+<div class="card">
+  <div class="sold-out">SOLD OUT</div>
+  <img src="rfox.jpeg" alt="Red Fox" />
+  <div class="pet-name">Red Fox</div>
+  <div class="price">60k</div>
+  <button disabled style="background:#ccc;cursor:not-allowed;">SOLD OUT</button>
+</div>
+
+  </div>
+</section>
+  
+  
+  
  <section id="paradise-egg">  
   <div class="subtitle">Paradise Egg</div>  
   <div class="container">  
@@ -256,6 +311,7 @@ nav a:hover {
       <img src="sc macaw.jpeg" alt="Scarlet Macaw" />  
       <div class="pet-name">Scarlet Macaw</div>  
       <div class="price">20k</div>  
+      <button disabled style="background:#ccc;cursor:not-allowed;">SOLD OUT</button>
     </div>  
 
     <!-- Mimic Octopus (Sold Out) -->
@@ -264,6 +320,7 @@ nav a:hover {
       <img src="mimic.jpeg" alt="Mimic Octopus" />  
       <div class="pet-name">Mimic Octopus</div>  
       <div class="price">60k</div>  
+      <button disabled style="background:#ccc;cursor:not-allowed;">SOLD OUT</button>
     </div>  
 
   </div>  
@@ -303,6 +360,7 @@ nav a:hover {
   <img src="mantis.jpeg" alt="Mantis" />
   <div class="pet-name">Mantis</div>
   <div class="price">20k</div>
+  <button disabled style="background:#ccc;cursor:not-allowed;">SOLD OUT</button>
 </div>
 
 <!-- ========== Dragonfly (Sold Out) ========== -->
@@ -311,6 +369,7 @@ nav a:hover {
   <img src="df.jpeg" alt="Dragonfly" />
   <div class="pet-name">Dragonfly</div>
   <div class="price">60k</div>
+  <button disabled style="background:#ccc;cursor:not-allowed;">SOLD OUT</button>
 </div>
 
   </div>
@@ -358,6 +417,7 @@ nav a:hover {
   <img src="bronto.jpeg" alt="Brontosaurus" />
   <div class="pet-name">Brontosaurus</div>
   <div class="price">45k</div>
+  <button disabled style="background:#ccc;cursor:not-allowed;">SOLD OUT</button>
 </div>
 
 <!-- ========== T-Rex (Sold Out) ========== -->
@@ -366,6 +426,7 @@ nav a:hover {
   <img src="trex.jpeg" alt="T-Rex" />
   <div class="pet-name">T-Rex</div>
   <div class="price">60k</div>
+  <button disabled style="background:#ccc;cursor:not-allowed;">SOLD OUT</button>
 </div>
 
   </div>
@@ -442,4 +503,21 @@ nav a:hover {
     );
     waCheckout.href = `https://wa.me/6281344110959?text=${text}`;
   }
-    </script>
+</script>
+  
+  
+  <script>
+  const searchInput = document.getElementById("search");
+
+  searchInput.addEventListener("input", () => {
+    const keyword = searchInput.value.toLowerCase();
+    document.querySelectorAll(".card").forEach(card => {
+      const name = card.querySelector(".pet-name")?.innerText.toLowerCase() || "";
+      if (name.includes(keyword)) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  });
+  </script>
