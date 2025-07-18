@@ -171,6 +171,45 @@ nav a:hover {
   cursor: pointer;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 }
+  
+  .legendary {
+  background: linear-gradient(135deg, red, orange, yellow, green, blue, indigo, violet);
+  color: orange;
+  border: 3px solid red;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+  position: relative;
+}
+
+.legendary .pet-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: orange;
+}
+
+.legendary .drop-rate {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(255, 255, 255, 0.8);
+  color: red;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+  
+  .legendary .price {
+  color: white;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px black;
+}
+  
+  .legendary .pet-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: orange;
+  text-shadow: 1px 1px 3px black;
+}
   </style>
 </head>
 <body>  <h1>WELCOME TO EGO GAG STORES!!</h1>
@@ -286,8 +325,8 @@ nav a:hover {
       <a href="https://wa.me/6281344110959?text=Halo! Saya tertarik membeli Red Giant Ant" target="_blank">Order</a>
     </div>
 
-  <!-- Red Fox (SOLD OUT) -->
-<div class="card">
+  <!-- Red Fox (Legendary) -->
+<div class="card legendary">
   <div class="sold-out">SOLD OUT</div>
   <img src="rfox.jpeg" alt="Red Fox" />
   <div class="pet-name">Red Fox</div>
@@ -337,14 +376,14 @@ nav a:hover {
       <button disabled style="background:#ccc;cursor:not-allowed;">SOLD OUT</button>
     </div>  
 
-    <!-- Mimic Octopus (Sold Out) -->
-    <div class="card">  
-      <div class="sold-out">SOLD OUT</div>  
-      <img src="mimic.jpeg" alt="Mimic Octopus" />  
-      <div class="pet-name">Mimic Octopus</div>  
-      <div class="price">60k</div>  
-      <button disabled style="background:#ccc;cursor:not-allowed;">SOLD OUT</button>
-    </div>  
+    <!-- Mimic Octopus (Legendary) -->
+<div class="card legendary">  
+  <div class="sold-out">SOLD OUT</div>  
+  <img src="mimic.jpeg" alt="Mimic Octopus" />  
+  <div class="pet-name">Mimic Octopus</div>  
+  <div class="price">60k</div>  
+  <button disabled style="background:#ccc;cursor:not-allowed;">SOLD OUT</button>
+</div>
 
   </div>  
 </section>
@@ -386,8 +425,8 @@ nav a:hover {
   <button disabled style="background:#ccc;cursor:not-allowed;">SOLD OUT</button>
 </div>
 
-<!-- ========== Dragonfly (Sold Out) ========== -->
-<div class="card">
+<!-- ========== Dragonfly (Legendary) ========== -->
+<div class="card legendary">
   <div class="sold-out">SOLD OUT</div>
   <img src="df.jpeg" alt="Dragonfly" />
   <div class="pet-name">Dragonfly</div>
@@ -443,8 +482,8 @@ nav a:hover {
   <button disabled style="background:#ccc;cursor:not-allowed;">SOLD OUT</button>
 </div>
 
-<!-- ========== T-Rex (Sold Out) ========== -->
-<div class="card">
+<!-- ========== T-Rex (Legendary) ========== -->
+<div class="card legendary">
   <div class="sold-out">SOLD OUT</div>
   <img src="trex.jpeg" alt="T-Rex" />
   <div class="pet-name">T-Rex</div>
